@@ -1,0 +1,366 @@
+@import "variables";
+
+//Mixin de ambas secciones.
+@mixin secciones($padding, $background, $seccion) {
+    .contenedor-#{$seccion} {
+
+        padding: $padding;
+        background: $background;
+
+        @content;
+    }
+}
+
+// Mixin para la seccion de formulario.
+@mixin formulario () {
+    > form {
+
+        width: 100%;
+        height: 100%;
+        
+        display: flex;
+        gap: 50px;
+
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include seccionesInputs($contenedorInputCuenta) {
+
+            @include titulosCamposEntrada(label, $colorFuenteTitulosCampos,$fontFamily,$sizeFuenteTitulosCampos,$weightFuente);
+
+            @include contenedorInputs($backgroundInputs, $borderRadiusInputsBotones ){
+
+                @include inputs($nameInputCuenta, $colorFuenteInputs, $colorFuentePlaceholderInputs, $fontFamily, $sizeFuenteInputs, $weightFuente, 100%)
+            }
+        }
+
+        @include seccionPorcentaje() {
+            @include titulosCamposEntrada(span, $colorFuenteTitulosCampos,$fontFamily,$sizeFuenteTitulosCampos,$weightFuente);
+
+            @include botones($NameClassBotonPorcentaje, $colorBackgroundBotonesPorcentaje, $borderRadiusInputsBotones, $colorFuenteBotones, $fontFamily, $sizeFuenteBotones, $weightFuente);
+
+            @include InputCustom($borderRadiusInputsBotones, $backgroundInputs){
+                @include inputs($nameInputPorcentajeCustom, $colorFuenteInputs, $colorFuentePlaceholderInputs, $fontFamily, $sizeFuenteInputs, $weightFuente, 100%)
+            };
+
+        }
+        
+        @include seccionesInputs($contenedotInputPersonas){
+
+            @include titulosCamposEntrada(label, $colorFuenteTitulosCampos, $fontFamily, $sizeFuenteTitulosCampos, $weightFuente);
+
+            @include mensajeError($colorFuenteError, $fontFamily, $sizeFuenteTitulosCampos, $weightFuente);
+
+            @include contenedorInputs($backgroundInputs, $borderRadiusInputsBotones ){
+
+                @include inputs($nameInputPersonas, $colorFuenteInputs, $colorFuentePlaceholderInputs, $fontFamily, $sizeFuenteInputs, $weightFuente, 100%)
+            }
+
+        }
+    }
+}
+
+
+
+
+// Mixin para la seccion de resultados.
+@mixin resultado($borderRadius) {
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-radius: $borderRadius;
+
+
+    @include contenedorResultados() {
+        @include contenedorTipTotal(){
+            @include TextoDescripcionResultado($colorFuenteTextoPrincipalResultado, $colorFuenteTextoSecundarioDescripcionResultados, $fontFamily, $sizeFuenteTextoPrincipalResultado, $sizeFuenteTextoSecundarioResultado, $weightFuente);
+
+            @include TextoResultado($colorFuenteCantidadResultado, $fontFamily, $sizeFuenteCantidadResultado, $sizeFuenteCantidadResultadoAdaptable , $weightFuente)
+        }
+
+        @include botones($nameClassBotonReset, $backgroundBotonResetPasivo, $borderRadiusInputsBotones, $colorFuenteBotonResetPasivo, $fontFamily, $sizeFuenteBotones, $weightFuente);
+    }
+}
+
+
+//***************************************
+//MIXINS PARA LOS ESTILOS DEL FORMULARIO.
+//***************************************
+
+
+//Mixin para los inputs de cuenta y personas.
+@mixin seccionesInputs ($NombreContenedor) {
+    .contenedor-#{$NombreContenedor} {
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+       @content;
+    }
+}
+
+//Mixin para el contenedor de los botones del porcentaje.
+@mixin seccionPorcentaje() {
+    .contenedor-botones {
+        
+        > div {
+            
+            margin-top: 10px;
+            
+            display: grid;
+            
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            
+            gap: 15px;
+
+            @media (max-width: 920px) {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, auto);
+            }
+        }
+
+        @content;
+    }
+}
+
+//Mixin para el contenedor de los inputs de cuenta y personas;
+@mixin contenedorInputs ($background, $borderRadius){
+    > div {
+        box-sizing: border-box;
+        display: flex;
+
+        width: 100%;
+
+        justify-content: space-between;
+        align-items: center;
+
+        height: 40px;
+
+        margin-top: 10px;
+        padding: 0 20px 0 20px;
+
+        background: $background;
+
+        border-radius: $borderRadius;
+        
+        border: 1px solid #fff;
+
+        &:hover {
+            border: 1px solid #5CAAA1;
+        }
+
+        @content;
+    }
+}
+
+//Mixin con los estilos de todos los Inputs.
+@mixin inputs($nameInput, $color, $colorPlaceholder, $family, $size, $weight, $width) {
+    ##{$nameInput} {
+        
+        box-sizing: border-box;
+
+        width: $width;
+        height: 100%;
+
+        background: none;
+
+        text-align: end;
+
+        border: none;
+
+        color: $color;
+
+        caret-color: $colorPlaceholder;
+
+        font: {
+            family: $family;
+            size: $size;
+            weight: $weight;
+        }
+
+        &::placeholder {
+            color: $colorPlaceholder;
+
+            font: {
+                family: $family;
+                size: $size;
+                weight: $weight;
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+//Mixin con los estilos del input de la seccion de porcentaje
+@mixin InputCustom ($borderRadius, $background) {
+    .contenedor-inputCustom {
+        padding-right: 10px;
+
+        border: 1px solid #fff;
+        border-radius: $borderRadius;
+
+        background: $background;
+
+        &:hover {
+            border: 1px solid #5CAAA1;
+        }
+
+        @content;
+    }
+}
+
+//Mixin para el texto de los titulos de los campos de entrada del formulario.
+@mixin titulosCamposEntrada ($etiqueta, $color, $family, $size, $weight) {
+    > #{$etiqueta} {
+
+        color: $color;
+
+        font: {
+            family: $family;
+            size: $size;
+            weight: $weight;
+        }
+    }
+}
+
+// Mixin para los estilos del texto de error.
+@mixin mensajeError($color, $family, $size, $weight) {
+    #mensaje-error {
+        color: $color;
+        font: {
+            family: $family;
+            size: $size;
+            weight: $weight;
+        }
+    }
+}
+
+
+//******************************************
+//MIXINS PARA LOS ESTILOS DE LOS RESULTADOS.
+//*******************************************
+
+//Mixin para los estilos de los resultados.
+@mixin contenedorResultados() {
+    .contenedor-tip-total {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        @content;
+    }
+
+    @content;
+}
+
+//Mixin para los estilos de los contenedores de tips y Total.
+@mixin contenedorTipTotal() {
+    .tip-total {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        @content;
+
+        @media (max-width: 690px) {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+//Mixin con los estilos de los textos de los resultados.
+
+@mixin TextoDescripcionResultado ($colorTextoPrincipal, $colorTextoSecundario, $family, $sizeTextoPrincipal, $sizeTextoSecundario, $weight) {
+    .texto-resultados {
+        display: flex;
+        flex: auto;
+        max-width: 90px;
+
+        flex-direction: column;
+        justify-content: center;
+
+        &__principal {
+            color: $colorTextoPrincipal;
+           
+            font: {
+                family: $family;
+                weight: $weight;
+                size: $sizeTextoPrincipal;
+            }
+        }
+
+        
+        &__secundario {
+            color: $colorTextoSecundario;
+            
+            font: {
+                family: $family;
+                weight: $weight;
+                size: $sizeTextoSecundario;
+            }
+        }
+    }
+}
+
+@mixin TextoResultado($color, $family, $size, $sizeAdaptable, $weight) {
+    .resultado {
+        flex: 1;
+        max-width: 205px;
+        text-align: end;
+
+        overflow: hidden;
+
+
+        span {
+
+            color: $color;
+            font: {
+                family: $family;
+                size: $size;
+                weight: $weight;
+            }
+
+            @media (max-width: 690px) {
+                font-size: $sizeAdaptable;
+            }
+        }
+    }
+}
+
+//*************************************
+//MIXINS QUE COMPARTEN AMBAS SECCIONES.
+//*************************************
+
+
+@mixin botones ($nameClass, $colorBackgroundBoton, $borderRadius, $color, $family, $size, $weight) {
+    .#{$nameClass} {
+
+        width: 100%;
+        height: 50px;
+
+        background: $colorBackgroundBoton;
+
+        border: none;
+        border-radius: $borderRadius;
+
+        color: $color;
+
+        font: {
+            family: $family;
+            size: $size;
+            weight: $weight;
+        }
+
+    }
+
+}

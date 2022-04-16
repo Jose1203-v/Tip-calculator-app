@@ -1,0 +1,42 @@
+// Aquí se agregaran los estilos del contenedor principal y de todos los elementos en su interior.
+
+@import "variables";
+@import "mixin-secciones-resultado-formulario"; 
+
+.contenedor-principal {
+    display: grid;
+    
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas: "formulario    resultado";
+
+    gap: 50px;
+
+    width: 100%;
+    max-width: $ancho - $padding * 2;
+
+    padding: $padding;
+
+    background: $backgroundContenedorPrincipal;
+
+    box-sizing: border-box;
+    border-radius: $borderRadius;
+
+    @media (max-width: 690px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: "formulario"
+                             "resultado";
+    }
+}
+
+
+@include secciones($paddingFormulario, none, $seccionFormulario){
+    @include formulario();
+}
+
+@include secciones($PaddinResultado, $backgroundResultado, $seccionResultado) {
+
+    @include resultado ($borderRadiusResultado);
+}
+

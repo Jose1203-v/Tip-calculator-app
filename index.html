@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos-principales.css">
+
+    <script src="js/scrip.js"></script>
+</head>
+<body>
+    <div>
+        <img src="img/icon/logo.svg">
+
+        <div class="contenedor-principal">
+
+            <!-- Contenedor del formulario -->
+            <div class="contenedor-formulario">
+                <form method="get" id="formulario">
+
+                    <!-- Contenedor con el input para ingresar el monto de la cuenta -->
+                    <div class="contenedor-cuenta">
+                        <label for="cuenta">Bill</label>
+                        <div>
+                            <img src="img/icon/icon-dollar.svg">
+                            <input type="text" name="cuenta" id="cuenta" placeholder="0" pattern="[0-9.9]{0,}">
+                        </div>
+                    </div>
+
+                    <!-- Contenedor con las opciones del porcentaje de la propina -->
+                    <div class="contenedor-botones">
+                        <span class="contenedor-botones__descripcion">Select tip %</span>
+                        <div>
+                            <button name="botones-porcentaje-5%" id="boton-5" class="botones-porcentaje" value="0.05" type="button">5%</button>
+                            <button name="botones-porcentaje-10%" id="boton-10" class="botones-porcentaje" value="0.1" type="button">10%</button>
+                            <button name="botones-porcentaje-15%" id="boton-15" class="botones-porcentaje" value="0.15" type="button">15%</button>
+                            <button name="botones-porcentaje-25%" id="boton-25" class="botones-porcentaje" value="0.25" type="button">25%</button>
+                            <button name="botones-porcentaje-50%" id="boton-50" class="botones-porcentaje" value="0.50" type="button">50%</button>
+                            <div class = "contenedor-inputCustom"><input type="text" name="porcentajeCustom" id="porcentajeCustom" placeholder="Custom" pattern="[0-9]{0,}"></div>
+                        </div>
+                    </div>
+
+                    <!-- Contenedor para ingresar el numero de personas que van a cancelar la cuenta -->
+                    <div class="contenedor-numeroPersonas">
+                        <label for="personas">Number of people</label>
+                        <span id="mensaje-error"></span>
+                        <div id="contenedor-inputPersonas">
+                            <img src="img/icon/icon-person.svg">
+                            <input type="text" name="personas" id="personas" placeholder="0" pattern="[1-9]{0,}">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Contenedor para mostrar el resultado -->
+            <div class="contenedor-resultado">
+
+                <div class="contenedor-tip-total">
+
+                    <!-- Contenedor con los elementos para mostrar el resultado de la propina -->
+                    <div class="resultado-tip tip-total">
+                        <div class="texto-resultados">
+                            <span class="texto-resultados__principal">Tip Amount</span><br>
+                            <span class="texto-resultados__secundario">/ person</span>
+                        </div>
+                        <div class="resultado"><span id="span-tip">$0.00</span></div>
+                    </div>
+
+                    <!-- Contenedor con los elementos para mostrar el resultado total a pagar -->
+                    <div class="resultado-total tip-total">
+                        <div class="texto-resultados">
+                            <span class="texto-resultados__principal">Total</span><br>
+                            <span class="texto-resultados__secundario">/ person</span>
+                        </div>
+                        <div class="resultado"><span id="span-total">$0.00</span></div>
+                    </div>
+
+                </div>
+
+                <!-- Boton para resetear el formulario -->
+                <button class="reset" type="button" id="reset" form="formulario" >Reset</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

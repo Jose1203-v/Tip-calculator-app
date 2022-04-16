@@ -1,0 +1,71 @@
+// Variables para el contenedor principal
+$ancho: 920px;
+$padding: 30px;
+$borderRadius: 20px;
+
+$backgroundContenedorPrincipal: #fff;
+
+
+// Variables para los contenedores del Formulario y El resultado.
+
+$PaddinResultado: 40px;
+$paddingFormulario: 10px;
+
+$backgroundResultado: hsl(183, 100%, 15%);
+
+$borderRadiusResultado: 10px;
+
+//Variables para conformar selectores.
+$seccionFormulario: formulario;
+$seccionResultado: resultado;
+
+$contenedorInputCuenta: cuenta;
+$contenedotInputPersonas: numeroPersonas;
+$nameInputCuenta: cuenta;
+$nameInputPorcentajeCustom: porcentajeCustom;
+$nameInputPersonas: personas;
+
+
+// Color de fondo de la pagina.
+$colorBackground: #C5E4E7;
+
+
+//Variables para las fuentes. 
+$fontFamily: 'Space Mono';
+$weightFuente: 700;
+
+$colorFuenteTitulosCampos: #6D7A7A; 
+
+$colorFuentePlaceholderInputs: #9FB7B7;
+$colorFuentePlaceholderInputCustom: #4C6866;
+$colorFuenteInputs: #003332;
+$colorFuenteBotones: #fff;
+$colorFuenteError: #B47C6D;
+$colorFuenteTextoPrincipalResultado: #fff;
+$colorFuenteTextoSecundarioDescripcionResultados: #6D7A7A;
+$colorFuenteCantidadResultado: #2CBDA9;
+$colorFuenteBotonResetPasivo: #045D63;
+
+
+$sizeFuenteTitulosCampos: 13px;//Tambien es usada en el texto de error.
+$sizeFuenteInputs: 24px;
+$sizeFuenteBotones: 20px;
+$sizeFuenteTextoPrincipalResultado: 13px;
+$sizeFuenteTextoSecundarioResultado: 10px;
+$sizeFuenteCantidadResultado: 40px;
+$sizeFuenteCantidadResultadoAdaptable: 30px;
+
+//Variables para los inputs.
+$backgroundInputs: #F3F8FB;
+$borderRadiusInputsBotones: 5px;
+
+
+
+//Variables para los botones.
+$NameClassBotonPorcentaje: botones-porcentaje;
+$colorBackgroundBotonesPorcentaje: #00474B;
+
+
+// Variables para el boton Reset
+$nameClassBotonReset: reset;
+$backgroundBotonResetPasivo: #0C686D;

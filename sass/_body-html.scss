@@ -1,0 +1,44 @@
+// Aquí se resetena los margin y los paddin. También se le agregan estilos a los elementos HTML y BODY
+
+@import "variables";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    background: $colorBackground;
+}
+
+
+body {
+
+    height: 100%;
+    width: 100vw;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    > div {
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+        max-width: $ancho;
+        height: 100%;
+
+        padding-top: 100px;
+
+        > img {
+            margin-bottom: 50px;
+            max-width: 87px;
+            max-height: 54px;
+        }
+    }
+}
